@@ -1,0 +1,22 @@
+{
+  "name": "roa",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.ts",
+  "scripts": {
+    "build": "tsc ./src/public/index.ts",
+    "dev": "npm run build && npm run start",
+    "start": "node ./src/public/index.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "private": true,
+  "dependencies": {
+    "mysql": "^2.18.1",
+    "typeorm": "^0.3.17"
+  },
+  "devDependencies": {
+    "ts-node": "^10.9.1",
+    "typescript": "^5.2.2"
+  }
+}
