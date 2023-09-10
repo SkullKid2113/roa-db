@@ -11,7 +11,12 @@ const AppDataSource = new DataSource({
 AppDataSource.initialize()
   .then((ds) => {
 
-    ds.query("SELECT * FROM rules").then((rules) => {
+
+    // Example of sql injection for an update query
+    const bad_user_input = "1 \" OR 1=\"1"
+
+
+    ds.query("SELECT * FROM rules WHERE rule = \"" + bad_user_input + "\"").then((rules) => {
       console.log(rules)
     })
 
@@ -20,10 +25,6 @@ AppDataSource.initialize()
   .catch((err) => {
     console.error("Error during Data Source initialization", err)
   })
-
-
-// Use AppDataSource to query all rules
-
 
 /*
 YOUR MISSION:

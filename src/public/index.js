@@ -11,7 +11,9 @@ var AppDataSource = new typeorm_1.DataSource({
 });
 AppDataSource.initialize()
     .then(function (ds) {
-    ds.query("SELECT * FROM rules").then(function (rules) {
+    // Example of sql injection for an update query
+    var bad_user_input = "1 \" OR 1=\"1";
+    ds.query("SELECT * FROM rules WHERE rule = \"" + bad_user_input + "\"").then(function (rules) {
         console.log(rules);
     });
     console.log("Data Source has been initialized!");
@@ -19,7 +21,6 @@ AppDataSource.initialize()
     .catch(function (err) {
     console.error("Error during Data Source initialization", err);
 });
-// Use AppDataSource to query all rules
 /*
 YOUR MISSION:
 - Fetch all of the rules and output them upon running of the ... script.. thing ...
