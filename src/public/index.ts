@@ -9,16 +9,21 @@ const AppDataSource = new DataSource({
   database: "roa",
 })
 AppDataSource.initialize()
-  .then(() => {
-  
+  .then((ds) => {
+
+    ds.query("SELECT * FROM rules").then((rules) => {
+      console.log(rules)
+    })
+
     console.log("Data Source has been initialized!")
   })
   .catch((err) => {
     console.error("Error during Data Source initialization", err)
   })
 
-  const rawData = await AppDataSource.query('SELECT * FROM rules')
-  console.log(rawData)
+
+// Use AppDataSource to query all rules
+
 
 /*
 YOUR MISSION:

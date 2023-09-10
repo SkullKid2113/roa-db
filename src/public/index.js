@@ -10,14 +10,16 @@ var AppDataSource = new typeorm_1.DataSource({
     database: "roa",
 });
 AppDataSource.initialize()
-    .then(function () {
+    .then(function (ds) {
+    ds.query("SELECT * FROM rules").then(function (rules) {
+        console.log(rules);
+    });
     console.log("Data Source has been initialized!");
 })
     .catch(function (err) {
     console.error("Error during Data Source initialization", err);
 });
-var rawData = await AppDataSource.query('SELECT * FROM rules');
-console.log(rawData);
+// Use AppDataSource to query all rules
 /*
 YOUR MISSION:
 - Fetch all of the rules and output them upon running of the ... script.. thing ...
