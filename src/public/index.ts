@@ -10,11 +10,15 @@ const AppDataSource = new DataSource({
 })
 AppDataSource.initialize()
   .then(() => {
+  
     console.log("Data Source has been initialized!")
   })
   .catch((err) => {
     console.error("Error during Data Source initialization", err)
   })
+
+  const rawData = await AppDataSource.query('SELECT * FROM rules')
+  console.log(rawData)
 
 /*
 YOUR MISSION:

@@ -16,3 +16,9 @@ AppDataSource.initialize()
     .catch(function (err) {
     console.error("Error during Data Source initialization", err);
 });
+var rawData = await AppDataSource.query('SELECT * FROM rules');
+console.log(rawData);
+/*
+YOUR MISSION:
+- Fetch all of the rules and output them upon running of the ... script.. thing ...
+*/
