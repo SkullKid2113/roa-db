@@ -1,5 +1,7 @@
 import {DataSource} from "typeorm"
 
+import {User} from "../entity/roa"
+
 const AppDataSource = new DataSource({
   type: "mysql",
   host: "localhost",
@@ -7,6 +9,8 @@ const AppDataSource = new DataSource({
   username: "root",
   password: "banana",
   database: "roa",
+  entities: [User],
+  synchronize: false,
 })
 AppDataSource.initialize()
   .then((ds) => {
