@@ -1,19 +1,18 @@
-import { Entity, PrimaryGeneratedColumn, Column } from "typeorm"
+import {Column, Entity, PrimaryColumn} from "typeorm";
 
 
 @Entity()
-export class User {
-    @PrimaryGeneratedColumn("uuid")
-    id: string
+export class Rule {
 
-    @Column()
-    rules: int
+  @PrimaryColumn()
+  id: string
 
-    @Column()
-    description: string
+  @Column()
+  rule: number
 
-    @Column()
-    episode: string
+  @Column()
+  description: string
+
+  @Column()
+  episode: string
 }
-  
-    export default User;

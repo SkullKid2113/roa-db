@@ -2,17 +2,18 @@
   "name": "roa",
   "version": "1.0.0",
   "description": "",
-  "main": "index.ts",
+  "main": "src/public/index.ts",
   "scripts": {
     "build": "tsc ./src/public/index.ts",
-    "dev": "npm run build && npm run start",
-    "start": "node ./src/public/index.js"
+    "dev": "ts-node ./src/public/index.ts",
+    "start": "node ./dist/public/index.js"
   },
   "author": "",
   "license": "ISC",
   "private": true,
   "dependencies": {
     "mysql": "^2.18.1",
+    "reflect-metadata": "^0.1.13",
     "typeorm": "^0.3.17",
     "uuid": "^9.0.0"
   },

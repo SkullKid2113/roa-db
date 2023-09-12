@@ -1,6 +1,7 @@
 import {DataSource} from "typeorm"
+import {Rule} from "../entity/roa";
+import "reflect-metadata"
 
-import {User} from "../entity/roa"
 
 const AppDataSource = new DataSource({
   type: "mysql",
@@ -9,8 +10,9 @@ const AppDataSource = new DataSource({
   username: "root",
   password: "banana",
   database: "roa",
-  entities: [User],
+  entities: [Rule],
   synchronize: false,
+  logging: true,
 })
 AppDataSource.initialize()
   .then((ds) => {
