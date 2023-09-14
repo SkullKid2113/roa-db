@@ -3,6 +3,7 @@ USE `roa`
 DROP TABLE IF EXISTS `rules`;
 CREATE TABLE `rules`
 (
+  `id` int NOT NULL PRIMARY KEY,
   `rule` int DEFAULT NULL,
   `description` varchar
 (256) DEFAULT NULL,
@@ -10,7 +11,8 @@ CREATE TABLE `rules`
 (128) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
-INSERT INTO `rules`
+INSERT INTO `
+rules`
 VALUES
   (2, 'The best deal is the one that makes the most profit.', 'The 34th Rule (DS9 novel)'),
   (3, 'Never spend more for an acquisition than you have to.', 'The Maquis, Part II (DS9 episode)'),

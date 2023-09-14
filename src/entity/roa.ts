@@ -2,10 +2,10 @@ import {Column, Entity, PrimaryColumn} from "typeorm";
 
 
 @Entity()
-export class Rule {
+export class Rules {
 
   @PrimaryColumn()
-  id: string
+  id: number
 
   @Column()
   rule: number

@@ -1,5 +1,5 @@
 import {DataSource} from "typeorm"
-import {Rule} from "../entity/roa";
+import {Rules} from "../entity/roa";
 import "reflect-metadata"
 
 
@@ -10,13 +10,18 @@ const AppDataSource = new DataSource({
   username: "root",
   password: "banana",
   database: "roa",
-  entities: [Rule],
+  entities: [Rules],
   synchronize: false,
   logging: true,
 })
 AppDataSource.initialize()
   .then((ds) => {
 
+
+    const rules =  AppDataSource
+    .getRepository(Rules)
+    .createQueryBuilder("rules")
+    .getMany()
 
     // Example of sql injection for what should be a limited scope query with a single value in the where clause for rule id
     /*const bad_user_input = "1 \" OR 1=\"1"
