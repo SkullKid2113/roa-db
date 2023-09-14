@@ -3,7 +3,7 @@ USE `roa`
 DROP TABLE IF EXISTS `rules`;
 CREATE TABLE `rules`
 (
-  `id` int NOT NULL PRIMARY KEY,
+  `id` int PRIMARY KEY NOT NULL ,
   `rule` int DEFAULT NULL,
   `description` varchar
 (256) DEFAULT NULL,

@@ -12,6 +12,7 @@
   "license": "ISC",
   "private": true,
   "dependencies": {
+    "@types/es6-shim": "^0.31.42",
     "mysql": "^2.18.1",
     "reflect-metadata": "^0.1.13",
     "typeorm": "^0.3.17",
