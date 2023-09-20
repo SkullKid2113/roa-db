@@ -8,10 +8,7 @@ export class Rules {
   id: number
 
   @Column()
-  rule: number
-
-  @Column()
-  description: string
+  rule: string
 
   @Column()
   episode: string
