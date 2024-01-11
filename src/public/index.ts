@@ -1,7 +1,6 @@
-import {DataSource} from "typeorm"
-import {Rules} from "../entity/roa";
-import "reflect-metadata"
-
+import { DataSource } from "typeorm";
+import { Rules } from "../entity/roa";
+import "reflect-metadata";
 
 const AppDataSource = new DataSource({
   type: "mysql",
@@ -13,15 +12,22 @@ const AppDataSource = new DataSource({
   entities: [Rules],
   synchronize: false,
   logging: true,
-})
+});
 AppDataSource.initialize()
   .then((ds) => {
+    const express = require("express");
+    const app = express();
+    const port = 3306;
 
+    app.get("../entity/roa", (req, res) => {
+      let query = req.rules;
+      res.send(`Yea Boi`);
+      console.log(query);
+    });
 
-    const rules =  AppDataSource
-    .getRepository(Rules)
-    .createQueryBuilder("rules")
-    .getMany()
+    app.listen(port, () => {
+      console.log(`Example app listening on port ${port}`);
+    });
 
     // Example of sql injection for what should be a limited scope query with a single value in the where clause for rule id
     /*const bad_user_input = "1 \" OR 1=\"1"
@@ -31,11 +37,11 @@ AppDataSource.initialize()
       console.log(rules)
     })*/
 
-    console.log("Data Source has been initialized!")
+    console.log("Data Source has been initialized!");
   })
   .catch((err) => {
-    console.error("Error during Data Source initialization", err)
-  })
+    console.error("Error during Data Source initialization", err);
+  });
 
 /*
 YOUR MISSION:

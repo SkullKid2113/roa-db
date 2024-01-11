@@ -16,10 +16,17 @@ var AppDataSource = new typeorm_1.DataSource({
 });
 AppDataSource.initialize()
     .then(function (ds) {
-    var rules = AppDataSource
-        .getRepository(roa_1.Rules)
-        .createQueryBuilder("rules")
-        .getMany();
+    var express = require("express");
+    var app = express();
+    var port = 3306;
+    app.get("../entity/roa", function (req, res) {
+        var query = req.roa_1;
+        res.send("Yea Boi");
+        console.log(query);
+    });
+    app.listen(port, function () {
+        console.log("Example app listening on port ".concat(port));
+    });
     // Example of sql injection for what should be a limited scope query with a single value in the where clause for rule id
     /*const bad_user_input = "1 \" OR 1=\"1"
 
