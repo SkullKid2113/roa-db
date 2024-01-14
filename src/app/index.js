@@ -1,7 +1,7 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 var typeorm_1 = require("typeorm");
-var roa_1 = require("../entity/roa");
+var roa_1 = require("../entity/rules");
 require("reflect-metadata");
 var AppDataSource = new typeorm_1.DataSource({
     type: "mysql",
