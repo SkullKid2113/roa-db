@@ -13,14 +13,4 @@ const AppDataSource = new DataSource({
   logging: true,
 })
 
-export function initialize() {
-  return AppDataSource.initialize()
-    .then((ds) => {
-      console.log("Data Source has been initialized!");
-      return ds
-    })
-    .catch((err) => {
-      console.error("Error during Data Source initialization", err);
-      throw err
-    });
-}
+export default AppDataSource;
