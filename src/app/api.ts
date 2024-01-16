@@ -10,10 +10,10 @@ router.get("/search", (req: Request, res: Response) => {
   const episodes = db
     .getRepository(Rules)
     .findBy({
-      rule: Like("%%"),
+      rule: Like("%wise%"),
     })
-    .then((rules: Rules[]) => {
-      console.log(episodes);
+    .then((rules) => {
+      console.log(rules);
     });
   res.json(req.query);
 });
