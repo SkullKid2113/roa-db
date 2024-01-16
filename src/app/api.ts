@@ -7,9 +7,14 @@ const router = Router();
 
 router.get("/search", (req: Request, res: Response) => {
   console.log("/search request: ", req.query);
-  const searchLike = dataSource.getRepository([Rules]).findBy({
-    title: Like("%no %"),
-  });
+  const episodes = db
+    .getRepository(Rules)
+    .findBy({
+      rule: Like("%%"),
+    })
+    .then((rules: Rules[]) => {
+      console.log(episodes);
+    });
   res.json(req.query);
 });
 
