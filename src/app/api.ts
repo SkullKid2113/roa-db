@@ -2,6 +2,7 @@ import { Router, Request, Response } from "express";
 import db from "./db";
 import { Rules } from "../entity/rules";
 import { Like } from "typeorm";
+import { json } from "stream/consumers";
 
 const router = Router();
 
@@ -10,12 +11,11 @@ router.get("/search", (req: Request, res: Response) => {
   const episodes = db
     .getRepository(Rules)
     .findBy({
-      rule: Like("%wise%"),
+      rule: Like("%%"),
     })
     .then((rules) => {
-      console.log(rules);
+      res.json(rules);
     });
-  res.json(req.query);
 });
 
 router.get("/rules", (req: Request, res: Response) => {
