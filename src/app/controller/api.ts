@@ -1,6 +1,6 @@
 import {Request, Response, Router} from "express";
-import db from "./db";
-import {Rules} from "../entity/rules";
+import db from "../db";
+import {Rules} from "../../entity/rules";
 import {Like} from "typeorm";
 
 const router = Router();

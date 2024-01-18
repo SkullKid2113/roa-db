@@ -1,5 +1,5 @@
 import * as express from "express"
-import api from "./api";
+import api from "./controller/api";
 import db from "./db"
 
 const app = express()
