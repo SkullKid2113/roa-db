@@ -1,8 +1,7 @@
-import { Router, Request, Response } from "express";
+import {Request, Response, Router} from "express";
 import db from "./db";
-import { Rules } from "../entity/rules";
-import { Like } from "typeorm";
-import { json } from "stream/consumers";
+import {Rules} from "../entity/rules";
+import {Like} from "typeorm";
 
 const router = Router();
 
@@ -11,18 +10,29 @@ router.get("/search", (req: Request, res: Response) => {
   const episodes = db
     .getRepository(Rules)
     .findBy({
-      rule: Like("%%"),
+      rule: Like(`%${req.query.q}%`)
     })
     .then((rules) => {
-      res.json(rules);
-    });
+      res.status(200).json(rules)
+    })
+    .catch((err) => {
+      console.log(err)
+      res.status(500).json({})
+    })
 });
 
 router.get("/rules", (req: Request, res: Response) => {
-  db.query("SELECT * FROM rules").then((rules: Rules[]) => {
-    console.log("# rules loaded", rules.length);
-    res.json(rules);
-  });
+
+  db.getRepository(Rules)
+    .find()
+    .then((rules) => {
+      console.log("# rules loaded", rules.length);
+      res.status(200).json(rules)
+    })
+    .catch((err) => {
+      console.log(err)
+      res.status(500).json({})
+    })
 });
 
 export default router;
