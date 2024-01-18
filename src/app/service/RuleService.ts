@@ -1,7 +1,7 @@
-import {Rules} from "../../entity/rules";
+import {Rule} from "../../entity/rule";
 
-interface RuleService {
-    find(ruleMatch: Rules): Promise<Rules[]>;
-    upsert(rule: Rules): Promise<Rules>;
+export interface RuleService {
+    find(ruleMatch: Rule): Promise<Rule[]>;
+    upsert(rule: Rule): Promise<Rule>;
     delete(id: number): Promise<void>;
 }

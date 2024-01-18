@@ -1,5 +1,5 @@
 import {DataSource} from "typeorm";
-import {Rules} from "../entity/rules";
+import {Rule} from "../entity/rule";
 
 const AppDataSource = new DataSource({
   type: "mysql",
@@ -8,7 +8,7 @@ const AppDataSource = new DataSource({
   username: "root",
   password: "banana",
   database: "roa",
-  entities: [Rules],
+  entities: [Rule],
   synchronize: false,
   logging: true,
 })

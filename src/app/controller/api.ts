@@ -1,6 +1,6 @@
 import {Request, Response, Router} from "express";
 import db from "../db";
-import {Rules} from "../../entity/rules";
+import {Rule} from "../../entity/rule";
 import {Like} from "typeorm";
 
 const router = Router();
@@ -8,7 +8,7 @@ const router = Router();
 router.get("/search", (req: Request, res: Response) => {
   console.log("/search request: ", req.query);
   const episodes = db
-    .getRepository(Rules)
+    .getRepository(Rule)
     .findBy({
       rule: Like(`%${req.query.q}%`)
     })
@@ -23,7 +23,7 @@ router.get("/search", (req: Request, res: Response) => {
 
 router.get("/rules", (req: Request, res: Response) => {
 
-  db.getRepository(Rules)
+  db.getRepository(Rule)
     .find()
     .then((rules) => {
       console.log("# rules loaded", rules.length);

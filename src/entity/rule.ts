@@ -1,7 +1,7 @@
 import {Column, Entity, PrimaryColumn} from "typeorm";
 
-@Entity()
-export class Rules {
+@Entity({name: "rules"})
+export class Rule {
 
   @PrimaryColumn("uuid")
   id: number
